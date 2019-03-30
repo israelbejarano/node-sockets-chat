@@ -47,3 +47,8 @@ socket.on('listaPersona', function(personas) {
     console.log('Servidor:', personas);
 
 });
+
+// Mensajes privados
+socket.on('mensajePrivado', function(mensaje) {
+    console.log('Mensaje privado: ', mensaje);
+});

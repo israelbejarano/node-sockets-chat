@@ -28,4 +28,10 @@ io.on('connection', (client) => {
         client.broadcast.emit('crearMensaje', crearMensaje('Administrador', `${personaBorrada.nombre} salió.`));
         client.broadcast.emit('listaPersona', usuarios.getPersonas());
     });
+
+    // mensajes privados
+    client.on('mensajePrivado', data => {
+        let persona = usuarios.getPersona(client.id);
+        client.broadcast.to(data.para).emit('mensajePrivado', crearMensaje(persona.nombre, data.mensaje));
+    });
 });
